@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+    xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+    xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
+    xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
+    xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"
+    xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"
+    office:version="1.0">
+    
+    <office:body>
+        <office:text>
+            <text:p text:style-name="Heading">Income Statement Report</text:p>
+
+            <text:p>Company: <text:span><t t-field="company.name"/></text:span></text:p>
+            <text:p>Fiscal Year: <text:span><t t-field="fiscalyear.name"/></text:span></text:p>
+            
+            <table:table>
+                <table:table-header-rows>
+                    <table:table-row>
+                        <table:table-cell><text:p>Month</text:p></table:table-cell>
+                        <table:table-cell><text:p>Start Date</text:p></table:table-cell>
+                        <table:table-cell><text:p>End Date</text:p></table:table-cell>
+                    </table:table-row>
+                </table:table-header-rows>
+                <table:table-rows>
+                    <table:table-row t-foreach="months" t-as="month">
+                        <table:table-cell><text:p><t t-esc="month['name']"/></text:p></table:table-cell>
+                        <table:table-cell><text:p><t t-esc="month['start_date']"/></text:p></table:table-cell>
+                        <table:table-cell><text:p><t t-esc="month['end_date']"/></text:p></table:table-cell>
+                    </table:table-row>
+                </table:table-rows>
+            </table:table>
+
+        </office:text>
+    </office:body>
+</office:document-content>
